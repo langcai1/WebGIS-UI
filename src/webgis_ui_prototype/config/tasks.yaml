@@ -1,0 +1,209 @@
+analyze_ui_requirement_task:
+  description: >
+    你必须严格基于以下用户输入内容进行 WebGIS UI 原型需求分析，不能脱离、扩写或虚构项目主题。
+
+    用户输入内容：
+    {project_plan}
+
+    请分析：
+    1. 项目主题
+    2. WebGIS 应用类型
+    3. 页面结构
+    4. 核心模块
+    5. 地图展示重点
+    6. 当前前端原型应该实现的内容
+    7. 当前阶段不应该实现的内容
+
+    约束：
+    - 不要固定套用某一种 WebGIS 模板
+    - 不要默认深色科技风
+    - 所有判断必须来自用户输入
+  expected_output: >
+    输出一份 WebGIS UI 原型需求分析文档。
+  agent: ui_requirement_analyst
+  output_file: outputs/ui_requirement_analysis.md
+
+
+analyze_style_task:
+  description: >
+    你必须严格基于以下用户输入内容，提取 UI 风格、视觉偏好和界面设计要求。
+
+    用户输入内容：
+    {project_plan}
+
+    请分析：
+    1. 主色调
+    2. 背景风格
+    3. 字体气质
+    4. 组件风格
+    5. 地图视觉风格
+    6. 面板、卡片、图表、按钮的设计倾向
+    7. 用户明确不想要的风格
+
+    约束：
+    - 如果用户没有明确说明某项偏好，必须写“用户未明确说明”
+    - 不要替用户编造审美偏好
+    - 不要固定生成深色科技风
+  expected_output: >
+    输出一份 UI 风格分析文档。
+  agent: style_analyst
+  context:
+    - analyze_ui_requirement_task
+  output_file: outputs/ui_style_analysis.md
+
+
+design_layout_task:
+  description: >
+    你必须基于用户输入、需求分析结果和风格分析结果，设计 WebGIS UI 原型布局。
+
+    用户输入内容：
+    {project_plan}
+
+    请设计：
+    1. 页面整体布局
+    2. 顶部区域
+    3. 左侧区域
+    4. 地图主区域
+    5. 右侧区域
+    6. 底部区域
+    7. 统计卡片、图层面板、预警面板、时间轴等模块的位置
+    8. 各模块之间的信息层级
+
+    约束：
+    - 布局必须服务于用户项目主题
+    - 不要固定套用左右面板模板
+    - 如果项目不需要某个模块，可以不设计
+  expected_output: >
+    输出一份 WebGIS UI 布局设计文档。
+  agent: layout_designer
+  context:
+    - analyze_ui_requirement_task
+    - analyze_style_task
+  output_file: outputs/layout_plan.md
+
+
+generate_vue_ui_task:
+  description: >
+    你必须基于用户输入、需求分析、风格分析、布局设计和前端生成约束，生成一个可运行的 Vue 3 + TypeScript WebGIS UI 原型项目。
+
+    用户输入内容：
+    {project_plan}
+
+    前端生成约束：
+    {frontend_constraints}
+
+    生成目标目录：
+    outputs/generated_frontend
+
+    技术栈：
+    - Vue 3
+    - TypeScript
+    - Vite
+    - Pinia
+    - Element Plus
+    - Leaflet
+    - CSS 或 SCSS
+    - mock 静态数据
+
+    必须生成以下文件结构：
+    outputs/generated_frontend/
+    ├── package.json
+    ├── index.html
+    ├── vite.config.ts
+    ├── tsconfig.json
+    └── src/
+        ├── main.ts
+        ├── App.vue
+        ├── router/index.ts
+        ├── stores/dashboardStore.ts
+        ├── mock/dashboardMock.ts
+        ├── styles/global.css
+        ├── components/AppHeader.vue
+        ├── components/MapPanel.vue
+        ├── components/LayerPanel.vue
+        ├── components/StatsPanel.vue
+        ├── components/WarningPanel.vue
+        ├── components/TimelineBar.vue
+        ├── views/HomeView.vue
+        └── views/MapView.vue
+
+    约束：
+    - 必须生成真实前端文件
+    - 不要只输出 Markdown 方案
+    - UI 风格必须来自用户输入
+    - 页面主题必须来自用户输入
+    - 第一版以能运行、能看、结构清楚为主
+    - 不接后端
+    - 不接 GeoServer
+    - 不接 PostGIS
+    - 不做登录权限
+    - router/index.ts 中 import 的所有 views 文件必须真实存在
+    - vite.config.ts 必须配置 @ 指向 src
+  expected_output: >
+    在 outputs/generated_frontend 中生成完整可运行的 Vue 前端项目文件。
+  agent: vue_ui_generator
+  context:
+    - analyze_ui_requirement_task
+    - analyze_style_task
+    - design_layout_task
+
+
+review_generated_frontend_task:
+  description: >
+    你需要审查生成的 Vue WebGIS UI 原型项目是否符合用户输入和前端运行要求。
+
+    用户输入内容：
+    {project_plan}
+
+    前端生成约束：
+    {frontend_constraints}
+
+    请检查：
+    1. 是否忠于用户项目主题
+    2. 是否忠于用户 UI 偏好
+    3. 是否生成了真实前端文件
+    4. 文件结构是否完整
+    5. Vue 3 + TypeScript + Vite 是否合理
+    6. 是否存在明显运行问题
+    7. 是否有不应该在当前阶段实现的复杂功能
+
+    约束：
+    - 不要只夸结果
+    - 必须指出潜在问题
+    - 必须给出下一步修复建议
+  expected_output: >
+    输出一份 Vue UI 原型审查报告。
+  agent: ui_code_reviewer
+  context:
+    - generate_vue_ui_task
+  output_file: outputs/vue_ui_review_report.md
+
+
+generate_codex_prompt_task:
+  description: >
+    你需要基于用户输入和已生成的前端原型，生成后续交给 Codex 的修改提示词。
+
+    用户输入内容：
+    {project_plan}
+
+    请生成：
+    1. 修复运行错误的 Codex 提示词
+    2. 优化 UI 细节的 Codex 提示词
+    3. 接入真实地图数据的 Codex 提示词
+    4. 接入 GeoServer / PostGIS 的 Codex 提示词
+    5. 后续工程化改造提示词
+
+    约束：
+    - Codex 提示词必须具体
+    - 要说明修改哪些文件
+    - 要说明不要破坏当前可运行结构
+  expected_output: >
+    输出一份可直接复制给 Codex 使用的后续开发提示词文档。
+  agent: codex_prompt_writer
+  context:
+    - analyze_ui_requirement_task
+    - analyze_style_task
+    - design_layout_task
+    - generate_vue_ui_task
+    - review_generated_frontend_task
+  output_file: outputs/codex_prompts/codex_next_steps.md

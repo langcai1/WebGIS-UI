@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity=".12"/>
+    </filter>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2f7d4f"/>
+      <stop offset="1" stop-color="#7bb36a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="#f4f8ef"/>
+  <rect x="32" y="24" width="1376" height="70" rx="22" fill="url(#top)" filter="url(#shadow)"/>
+  <text x="64" y="67" font-family="Arial, Microsoft YaHei" font-size="26" font-weight="700" fill="white">森林病虫害监测 WebGIS</text>
+  <text x="1120" y="65" font-family="Arial, Microsoft YaHei" font-size="15" fill="white" opacity=".9">区域状态 · Mock UI Reference</text>
+
+  <rect x="32" y="118" width="260" height="718" rx="24" fill="white" filter="url(#shadow)" opacity=".96"/>
+  <text x="60" y="160" font-family="Arial, Microsoft YaHei" font-size="20" font-weight="700" fill="#2f7d4f">图层与筛选</text>
+  <rect x="58" y="188" width="202" height="44" rx="12" fill="#2f7d4f" opacity=".12"/>
+  <rect x="58" y="250" width="202" height="44" rx="12" fill="#7bb36a" opacity=".17"/>
+  <rect x="58" y="312" width="202" height="44" rx="12" fill="#e7a23c" opacity=".17"/>
+  <rect x="58" y="374" width="202" height="44" rx="12" fill="#c94b43" opacity=".12"/>
+  <line x1="58" y1="462" x2="260" y2="462" stroke="#2f7d4f" opacity=".16" stroke-width="2"/>
+  <rect x="58" y="498" width="86" height="86" rx="18" fill="#2f7d4f" opacity=".12"/>
+  <rect x="166" y="498" width="86" height="86" rx="18" fill="#7bb36a" opacity=".15"/>
+  <rect x="58" y="604" width="194" height="36" rx="10" fill="#e5e7eb" opacity=".75"/>
+  <rect x="58" y="660" width="160" height="36" rx="10" fill="#e5e7eb" opacity=".75"/>
+
+  <rect x="316" y="118" width="804" height="718" rx="28" fill="white" filter="url(#shadow)"/>
+  <rect x="346" y="154" width="744" height="430" rx="24" fill="#f4f8ef" stroke="#2f7d4f" stroke-opacity=".16" stroke-width="2"/>
+  
+        <path d="M70,90 C170,20 250,140 360,72 C470,10 575,90 640,42 L690,300 C520,340 430,220 330,310 C220,390 150,260 65,335 Z" fill="#7bb36a" opacity=".25"/>
+        <circle cx="210" cy="160" r="18" fill="#c94b43" opacity=".75"/><circle cx="210" cy="160" r="44" fill="#c94b43" opacity=".12"/>
+        <circle cx="480" cy="210" r="14" fill="#e7a23c" opacity=".9"/><circle cx="480" cy="210" r="36" fill="#e7a23c" opacity=".16"/>
+        <path d="M130,270 C240,220 320,255 430,235 C520,220 590,250 650,218" stroke="#2f7d4f" stroke-width="6" fill="none" opacity=".5"/>
+        
+  <rect x="346" y="614" width="744" height="172" rx="24" fill="#f4f8ef" opacity=".9"/>
+  <text x="374" y="654" font-family="Arial, Microsoft YaHei" font-size="19" font-weight="700" fill="#2f7d4f">时间轴 / 趋势分析</text>
+  <line x1="390" y1="720" x2="1040" y2="720" stroke="#2f7d4f" stroke-width="6" opacity=".24"/>
+  <circle cx="430" cy="720" r="13" fill="#2f7d4f"/><circle cx="585" cy="720" r="13" fill="#7bb36a"/><circle cx="740" cy="720" r="13" fill="#e7a23c"/><circle cx="895" cy="720" r="13" fill="#c94b43"/><circle cx="1020" cy="720" r="13" fill="#2f7d4f" opacity=".55"/>
+
+  <rect x="1144" y="118" width="264" height="718" rx="24" fill="white" filter="url(#shadow)" opacity=".96"/>
+  <text x="1172" y="160" font-family="Arial, Microsoft YaHei" font-size="20" font-weight="700" fill="#2f7d4f">病虫害斑块详情</text>
+  <rect x="1172" y="190" width="204" height="88" rx="18" fill="#2f7d4f" opacity=".12"/>
+  <rect x="1172" y="300" width="204" height="58" rx="16" fill="#7bb36a" opacity=".16"/>
+  <rect x="1172" y="376" width="204" height="58" rx="16" fill="#e7a23c" opacity=".16"/>
+  <rect x="1172" y="452" width="204" height="58" rx="16" fill="#c94b43" opacity=".13"/>
+  <rect x="1172" y="550" width="204" height="190" rx="20" fill="#f4f8ef"/>
+  <path d="M1198,700 C1245,642 1270,690 1308,625 C1335,585 1355,615 1370,590" stroke="#2f7d4f" stroke-width="5" fill="none" opacity=".65"/>
+</svg>
