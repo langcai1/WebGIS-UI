@@ -182,3 +182,5 @@ outputs/generated_frontend/
 - 坐标信息
 
 不要在 package.json 中添加任何真实地图相关依赖。
+
+- Vue 模板中同一个元素不得出现多个 v-for；需要双重循环时必须使用 template 嵌套。
